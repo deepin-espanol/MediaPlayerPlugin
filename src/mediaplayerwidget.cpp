@@ -344,10 +344,10 @@ void MediaPlayerWidget::_q_onMetaDataChanged()
         m_picture->setPixmap(QIcon::fromTheme("emblem-music-symbolic").pixmap(QSize(200, 200)));
     } else {
         picture = QPixmap(pictureUrl.toString());
-        if (170 > picture.width() | 170 > picture.height()) {
+        if (170 > picture.width() or 170 > picture.height()) {
             //Means it'll be pixelized, use blur to "jolify"
             picture = QPixmap::fromImage(blurred(picture.scaled(pictureSize, Qt::IgnoreAspectRatio).toImage(), QRect(0, 0, pictureSize.width(), pictureSize.height()), 2));
-        } else if (picture.width() < 200 | picture.height() < 200) {
+        } else if (picture.width() < 200 or picture.height() < 200) {
             //Means it is between 150 and 200 of W nor H. Not enough pixelized to blur it.
             picture = picture.scaled(pictureSize, Qt::IgnoreAspectRatio);
         }
